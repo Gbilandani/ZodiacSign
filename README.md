@@ -6,7 +6,6 @@ Title : ZodiacSign
 
 Description :Find your zodiac sign
 
-
 ## Build Project
 
 - Step-1:
