@@ -34,4 +34,4 @@ jobs:
       
     - name: Trigger fork sync workflow
       run: |
-        curl -X POST https://api.github.com/repos/<your-username>/<your-fork-repo>/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{ steps.vars.outputs.branch }}"}'
+        curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{ steps.vars.outputs.branch }}"}'
