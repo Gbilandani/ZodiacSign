@@ -3,14 +3,13 @@ name: Notify Fork on Push
 on:
   push:
     branches:
-      
-main  # or other branches as needed
+      main  # or other branches as needed
 
 jobs:
   notify-fork:
     runs-on: ubuntu-latest
     steps:
       
-name: Trigger sync workflow in fork
+    - name: Trigger sync workflow in fork
       run: |
         curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"dev"}'
