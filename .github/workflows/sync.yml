@@ -12,4 +12,4 @@ jobs:
       
     - name: Trigger sync workflow in fork
       run: |
-        curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"main"}'
+        curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{github.ref}}"}'
