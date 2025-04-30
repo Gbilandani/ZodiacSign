@@ -1,4 +1,4 @@
-# ZodiacSign Application
+# ZodiacSign
 
 # MAD Assignment-2
 
