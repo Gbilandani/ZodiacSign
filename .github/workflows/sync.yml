@@ -1,37 +1,37 @@
-# name: Notify Fork on Push
-
-# on:
-#   push:
-#     branches:
-#       [ main, dev ]  # or other branches as needed
-
-# jobs:
-#   notify-fork:
-#     runs-on: ubuntu-latest
-#     steps:
-      
-#     - name: Trigger sync workflow in fork
-#       run: |
-#         curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{github.ref}}"}'
-
-
 name: Notify Fork on Push
 
 on:
   push:
-    branches:     
-      dev
-      main
+    branches:
+      [ main, dev ]  # or other branches as needed
 
 jobs:
   notify-fork:
     runs-on: ubuntu-latest
     steps:
-    - name: Set variables
-      id: vars
-      run: |
-        echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
       
-    - name: Trigger fork sync workflow
+    - name: Trigger sync workflow in fork
       run: |
-        curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{ steps.vars.outputs.branch }}"}'
+        curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{github.ref}}"}'
+
+
+# name: Notify Fork on Push
+
+# on:
+#   push:
+#     branches:     
+#       dev
+#       main
+
+# jobs:
+#   notify-fork:
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Set variables
+#       id: vars
+#       run: |
+#         echo "branch=${GITHUB_REF#refs/heads/}" >> $GITHUB_OUTPUT
+      
+#     - name: Trigger fork sync workflow
+#       run: |
+#         curl -X POST https://api.github.com/repos/pv-ani/ZodiacSign/actions/workflows/sync-fork.yml/dispatches \-H "Accept: application/vnd.github+json" \-H "Authorization: Bearer ${{ secrets.FORK_SYNC_PAT }}" \-d '{"ref":"${{ steps.vars.outputs.branch }}"}'
