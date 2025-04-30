@@ -3,7 +3,8 @@ name: Notify Fork on Push
 on:
   push:
     branches:
-      [ main, dev ]  # or other branches as needed
+      main
+      dev # or other branches as needed
 
 jobs:
   notify-fork:
